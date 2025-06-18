@@ -79,6 +79,7 @@ const SignIn = () => {
                         <button
                             type="submit"
                             className="bg-blue-950 py-2 px-12 sm:px-16 rounded-md text-white self-start text-md"
+                            onClick={() => navigate("/home")}
                         >
                             Sign In
                         </button>
