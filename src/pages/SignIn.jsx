@@ -1,23 +1,23 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useGoogleLogin } from '@react-oauth/google';
+// import { useGoogleLogin } from '@react-oauth/google';
 
 const SignIn = () => {
     const navigate = useNavigate();
 
     // Google Login handler
-    const loginWithGoogle = useGoogleLogin({
-        flow: 'implicit',
-        onSuccess: (tokenResponse) => {
-            const token = tokenResponse.credential;
-            const user = jwt_decode(token);
-            console.log("Google User Info:", user);
-            navigate('/home');
-        },
-        onError: (error) => {
-            console.error("Google Sign-In Failed", error);
-        }
-    });
+    // const loginWithGoogle = useGoogleLogin({
+    //     flow: 'implicit',
+    //     onSuccess: (tokenResponse) => {
+    //         const token = tokenResponse.credential;
+    //         const user = jwt_decode(token);
+    //         console.log("Google User Info:", user);
+    //         navigate('/home');
+    //     },
+    //     onError: (error) => {
+    //         console.error("Google Sign-In Failed", error);
+    //     }
+    // });
 
     return (
         <div className="flex flex-col lg:flex-row h-auto lg:h-screen font-marathi">
@@ -47,8 +47,8 @@ const SignIn = () => {
 
                     {/* Custom Google Button */}
                     <button
-                        className="flex items-center justify-center gap-4 text-black py-3 px-4 rounded-full w-full border-2 border-red-400"
-                        onClick={loginWithGoogle}
+                        // className="flex items-center justify-center gap-4 text-black py-3 px-4 rounded-full w-full border-2 border-red-400"
+                        // onClick={loginWithGoogle}
                     >
                         <img src="./Group (2).png" alt="Google Icon" className="w-6 h-6" />
                         <span className="text-gray-500 text-lg lg:text-xl">Continue With Google</span>
