@@ -7,7 +7,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 const Navbar = () => {
   const location = useLocation();
   const [activeNav, setActiveNav] = useState("Home");
-  const [selected, setSelected] = useState("Home")
+  const [selected, setSelected] = useState("Home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navOptions = [
@@ -26,6 +26,13 @@ const Navbar = () => {
     Contact: "/contact",
     "Saved News": "/saved-news",
     Blogs: "/blogs",
+  };
+
+  // Scroll to top under the sticky navbar
+  const handleNavClick = (item) => {
+    setSelected(item);
+    setIsMenuOpen(false); // Close mobile menu if open
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -65,12 +72,12 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {isMenuOpen && (
-        <div className="hidden sm:flex bg-[#12294A] gap-6 py-4 text-white justify-center gap-x-20">
+        <div className="sm:hidden bg-[#12294A] gap-6 py-4 text-white flex flex-col items-center">
           {navOptions.map((item, index) => (
             <Link
               to={navLinks[item]}
               key={index}
-              onClick={() => setSelected(item)}
+              onClick={() => handleNavClick(item)}
               className={`text-2xl p-2 hover:bg-red-600 hover:rounded-md ${
                 selected === item ? "bg-red-600 rounded-md" : ""
               }`}
@@ -89,6 +96,7 @@ const Navbar = () => {
             <Link
               to={navLinks[item]}
               key={index}
+              onClick={() => handleNavClick(item)}
               className={`text-2xl p-2 hover:bg-red-600 hover:rounded-md ${
                 isActive ? "bg-red-600 rounded-md" : ""
               }`}
@@ -105,7 +113,6 @@ const Navbar = () => {
       ) && (
         <div className="bg-red-600 py-3 text-white overflow-hidden whitespace-nowrap text-lg">
           <div className="flex w-max animate-marquee">
-            {/* Duplicate set for seamless loop */}
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex">
                 <span className="mx-6">
