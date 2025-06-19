@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { IoNewspaperOutline } from "react-icons/io5";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { CiHeadphones } from "react-icons/ci";
 import { CiSaveDown1 } from "react-icons/ci";
-import { ImUserMinus } from "react-icons/im";
 
 const newsCategory = [
   {
@@ -30,6 +29,8 @@ const newsCategory = [
 ];
 
 const Categories = () => {
+  const [selectedIndex, setSelectedIndex] = useState(0); // default selected first
+
   return (
     <div className="bg-gray-100 p-12 space-y-6">
       {/* Header */}
@@ -42,16 +43,26 @@ const Categories = () => {
       </div>
 
       {/* Scrolling container */}
-      {/* Scrolling container */}
-      <div className="overflow-x-auto whitespace-nowrap scrollbar-hide">
+      <div className="overflow-x-auto whitespace-nowrap scrollbar-hide py-4">
         <div className="inline-flex gap-6 px-10">
           {newsCategory.map((item, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-xl shadow-md p-6 text-center overflow-hidden transition-all duration-300 hover:border-dotted hover:border-red-600 min-w-[250px]"
+              onClick={() => setSelectedIndex(index)}
+              className={`group relative bg-white rounded-xl p-6 text-center overflow-hidden  min-w-[250px] cursor-pointer ${
+                selectedIndex === index
+                  ? "border-4 border-dotted border-red-600"
+                  : "hover:border-dotted hover:border-red-600"
+              }`}
             >
               {/* Floating Icon */}
-              <div className="absolute -top-2 -right-2 bg-blue-950 p-5 rounded-full flex items-center justify-center shadow-md transition-colors duration-300 group-hover:bg-red-600">
+              <div
+                className={`absolute -top-2 -right-2 p-5 rounded-full flex items-center justify-center shadow-md ${
+                  selectedIndex === index
+                    ? "bg-red-600"
+                    : "bg-blue-950 "
+                }`}
+              >
                 <div className="text-white text-2xl">{item.icon}</div>
               </div>
 

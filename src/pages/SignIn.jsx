@@ -22,7 +22,7 @@ const SignIn = () => {
     return (
         <div className="flex flex-col lg:flex-row h-auto lg:h-screen font-marathi">
             {/* Left Side */}
-            <div className="w-full lg:w-1/2 h-64 lg:h-full bg-green-300">
+            <div className="w-full lg:w-2/4 h-64 lg:h-full bg-green-300">
                 <img
                     src="./137172-fcsygzyjaw-1582609369 (1).png"
                     className="h-full w-full object-cover"

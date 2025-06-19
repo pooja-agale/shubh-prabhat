@@ -1,8 +1,8 @@
 import React from "react";
 import { VscEye } from "react-icons/vsc";
 import { CiShare2 } from "react-icons/ci";
-import { CiSaveDown1 } from "react-icons/ci";
 import { CiBookmark } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 
 const savedNews = [
   {
@@ -14,6 +14,8 @@ const savedNews = [
 ];
 
 const SavedNews = ({ hideBookmarkAndEye = false }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="font-marathi">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 py-10 px-16">
@@ -45,7 +47,8 @@ const SavedNews = ({ hideBookmarkAndEye = false }) => {
               <h3 className="text-lg mb-2 font-medium">{item.headline}</h3>
               <p className="text-gray-500 text-sm">{item.desc}</p>
             </div>
-            <button className="bg-red-600 text-white py-1 px-6 rounded-3xl">
+            <button className="bg-red-600 text-white py-1 px-6 rounded-3xl"
+            onClick={() => navigate("/home/read-news")}>
               Read News
             </button>
           </div>

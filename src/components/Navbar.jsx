@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { FaUser } from "react-icons/fa6";
-import { IoNotifications } from "react-icons/io5";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const location = useLocation();
   const [activeNav, setActiveNav] = useState("Home");
   const [selected, setSelected] = useState("Home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navOptions = [
     "Home",
@@ -63,7 +63,8 @@ const Navbar = () => {
           </div>
 
           <div className="hidden sm:block">
-            <button className="px-7 py-2 rounded-md text-white bg-gradient-to-r from-[#0B0F3B] to-[#E30613]">
+            <button className="px-7 py-2 rounded-md text-white bg-gradient-to-r from-[#0B0F3B] to-[#E30613]"
+            onClick={() => navigate("/signup")}>
               Login / Sign Up
             </button>
           </div>

@@ -108,7 +108,7 @@ const ReadNews = () => {
 
         {/* RIGHT SIDE */}
         <div className="w-full md:w-1/2 px-6 md:px-0">
-          <div>
+          <div className="lg:pr-16">
             <h1 className="bg-blue-900 p-3 text-red-600 rounded-t-xl">
               Latest News
             </h1>
@@ -118,10 +118,15 @@ const ReadNews = () => {
                 {[...Array(2)].map((_, i) => (
                   <div key={i} className="flex">
                     <span className="mx-6">
-                      📰 राज्यात प्रत्येक जिल्ह्यात 'हनी व्हिलेज'; लवकरच हनी कॅफे
+                      📰 राज्यात प्रत्येक जिल्ह्यात 'हनी व्हिलेज'; लवकरच हनी
+                      कॅफे
                     </span>
-                    <span className="mx-6">💰 RBI चा मोठा निर्णय - व्याजदरात घट</span>
-                    <span className="mx-6">🥛 दारूचे दर ९ ते ७०% पर्यंत वाढले</span>
+                    <span className="mx-6">
+                      💰 RBI चा मोठा निर्णय - व्याजदरात घट
+                    </span>
+                    <span className="mx-6">
+                      🥛 दारूचे दर ९ ते ७०% पर्यंत वाढले
+                    </span>
                     <span className="mx-6">🎓 इ.११वी प्रवेश यादी जाहीर</span>
                     <span className="mx-6">
                       🏛️ SC आयोगाला कायदेशीर दर्जा, स्टायपेंडमध्ये वाढ
@@ -141,9 +146,9 @@ const ReadNews = () => {
                         index % 2 === 0 ? "bg-white" : "bg-gray-100"
                       }`}
                     >
-                      <p className="text-sm sm:text-base">{item}</p>
+                      <p className="lg:text-sm text-xs sm:text-base">{item}</p>
                       <button
-                        className="text-red-800 underline text-sm sm:text-base"
+                        className="text-red-800 underline lg:text-sm sm:text-base text-xs"
                         onClick={() =>
                           window.scrollTo({ top: 0, behavior: "smooth" })
                         }
@@ -157,11 +162,11 @@ const ReadNews = () => {
             </div>
           </div>
 
-          <div className="space-y-4 pt-6">
+          <div className="space-y-4 pt-6 pr-14">
             {trendingNewsData.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+                className="flex flex-col sm:flex-row p-4 sm:items-center gap-2"
               >
                 <img
                   src={item.img}
@@ -172,11 +177,13 @@ const ReadNews = () => {
                   <p className="text-gray-500 text-sm sm:text-xl">
                     15 June 2025
                   </p>
-                  <p className="text-lg sm:text-3xl text-gray-800">
+                  <p className="lg:text-2xl sm:text-3xl text-gray-800">
                     {item.headline}
                   </p>
                   <button
-                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    onClick={() =>
+                      window.scrollTo({ top: 0, behavior: "smooth" })
+                    }
                     className="text-red-500 underline text-sm sm:text-lg"
                   >
                     Read News

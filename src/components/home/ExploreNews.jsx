@@ -22,13 +22,13 @@ const ExploreNews = () => {
             <br /> मिळतील !
           </h1>
           <p className="text-gray-500 text-sm sm:text-lg leading-relaxed">
-            Politics, Sports, Entertainment, Education, World Affairs & More
+            Politics, Sports, Entertainment, Education, World Affairs
             <br />
-            Discover The Latest News Tailored To Your Interests.
+             & More Discover The Latest News Tailored To Your Interests.
             <br />
-            Just One Click Connects You To Timely Updates From Your Favorite
+            Just One Click Connects You To Timely Updates From Your
             <br />
-            Categories. Your News, In Your Language.
+             Favorite Categories. Your News, In Your Language.
           </p>
           <div className="flex justify-center md:justify-start">
             <button className="bg-red-600 p-3 rounded-xl text-white text-sm sm:text-base">
