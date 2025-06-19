@@ -7,6 +7,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 const Navbar = () => {
   const location = useLocation();
   const [activeNav, setActiveNav] = useState("Home");
+  const [selected, setSelected] = useState("Home")
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navOptions = [
@@ -64,14 +65,14 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {isMenuOpen && (
-        <div className="sm:hidden bg-[#12294A] flex flex-col gap-3 py-4 items-center text-white w-full">
+        <div className="hidden sm:flex bg-[#12294A] gap-6 py-4 text-white justify-center gap-x-20">
           {navOptions.map((item, index) => (
             <Link
               to={navLinks[item]}
               key={index}
-              onClick={() => setActiveNav(item)}
-              className={`text-2xl hover:bg-red-600 hover:rounded-md ${
-                activeNav === item ? "bg-red-600 rounded-md" : ""
+              onClick={() => setSelected(item)}
+              className={`text-2xl p-2 hover:bg-red-600 hover:rounded-md ${
+                selected === item ? "bg-red-600 rounded-md" : ""
               }`}
             >
               {item}
@@ -82,17 +83,20 @@ const Navbar = () => {
 
       {/* Desktop Navbar */}
       <div className="hidden sm:flex bg-[#12294A] gap-6 py-4 text-white justify-center gap-x-20">
-        {navOptions.map((item, index) => (
-          <Link
-            to={navLinks[item]}
-            key={index}
-            className={`text-2xl p-2 hover:bg-red-600 hover:rounded-md ${
-              item === "Home" ? "bg-red-600 rounded-md" : ""
-            }`}
-          >
-            {item}
-          </Link>
-        ))}
+        {navOptions.map((item, index) => {
+          const isActive = location.pathname === navLinks[item];
+          return (
+            <Link
+              to={navLinks[item]}
+              key={index}
+              className={`text-2xl p-2 hover:bg-red-600 hover:rounded-md ${
+                isActive ? "bg-red-600 rounded-md" : ""
+              }`}
+            >
+              {item}
+            </Link>
+          );
+        })}
       </div>
 
       {/* Breaking News */}

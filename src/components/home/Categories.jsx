@@ -42,8 +42,9 @@ const Categories = () => {
       </div>
 
       {/* Scrolling container */}
-      <div className="overflow-hidden">
-        <div className="flex gap-6 px-10 w-max">
+      {/* Scrolling container */}
+      <div className="overflow-x-auto whitespace-nowrap scrollbar-hide">
+        <div className="inline-flex gap-6 px-10">
           {newsCategory.map((item, index) => (
             <div
               key={index}

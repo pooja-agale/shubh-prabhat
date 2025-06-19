@@ -7,7 +7,7 @@ export default {
         marquee: "marquee 25s linear infinite",
       },
       fontFamily: {
-        marathi: ['"Tiro Devanagari Marathi"', 'serif'],
+        marathi: ['"Tiro Devanagari Marathi"', "serif"],
       },
       keyframes: {
         marquee: {
@@ -17,5 +17,19 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".scrollbar-hide": {
+          /* Hide scrollbar for Chrome, Safari and Opera */
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+          /* Hide scrollbar for IE, Edge and Firefox */
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+        },
+      });
+    },
+  ],
 };

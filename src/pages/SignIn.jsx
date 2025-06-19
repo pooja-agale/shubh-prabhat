@@ -47,8 +47,7 @@ const SignIn = () => {
 
                     {/* Custom Google Button */}
                     <button
-                        // className="flex items-center justify-center gap-4 text-black py-3 px-4 rounded-full w-full border-2 border-red-400"
-                        // onClick={loginWithGoogle}
+                        className="flex items-center justify-center gap-4 text-black py-3 px-4 rounded-full w-full border-2 border-red-400"
                     >
                         <img src="./Group (2).png" alt="Google Icon" className="w-6 h-6" />
                         <span className="text-gray-500 text-lg lg:text-xl">Continue With Google</span>

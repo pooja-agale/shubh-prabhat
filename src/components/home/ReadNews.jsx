@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const latestNews = [
   "9 of 10 BJP Conuncillors Break Away in Murbad",
@@ -20,40 +20,44 @@ const trendingNewsData = [
     img: "./../Rectangle 49.png",
     headline: "Honey Village'Project to Launch in Maharashtra",
   },
-  {
-    img: "./../Rectangle 48.png",
-    headline: "Shocking Pune Accident: Womens Hit by Speeding Truck",
-  },
 ];
 
 const ReadNews = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % latestNews.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="font-marathi">
-      <div className="py-10 px-12">
-        <h1 className="text-4xl leading-relaxed ">
+      <div className="py-10 px-6 md:px-12 text-xl">
+        <h1 className="lg:text-4xl leading-relaxed ">
           Maharashtra Politics: भाजप नगरसेवकांनी पक्ष्याच्याच उमेदवाराला पाडला ,
           १०
           <br />
           पैकी ९ जण फुटले, कलेक्टरचीही मान्यता, मुरबाडमध्ये उलटफेर{" "}
         </h1>
-        <p className="text-2xl leading-relaxed ">
+        <p className="lg:text-2xl leading-relaxed ">
           कलेक्टरच्या मान्यतेनंतर नगरपंचायतीत मोठी राजकीय उलथापालथ; आमदार किसान
           कथोरे अडचणीत{" "}
         </p>
       </div>
-      <div className="flex">
-        <div className="px-12 pb-10 ">
-          {/* Image */}
-          <img src="./../image.png" className=" mb-4" alt="News" />
 
-          {/* Text below image */}
-          <div className="flex justify-between text-gray-600 text-md">
+      <div className="flex flex-col md:flex-row">
+        {/* LEFT SIDE */}
+        <div className="px-6 md:px-12 pb-10 w-full md:w-1/2">
+          <img src="./../image.png" className="mb-4" alt="News" />
+          <div className="flex flex-col sm:flex-row justify-between text-gray-600 text-md gap-2">
             <p className="font-bold">Article By: Rohan Sharma</p>
             <p className="text-gray-400">
               Last Updated: 15 June 2025, 10:00 AM
             </p>
           </div>
-          <div className="text-gray-400 space-y-5 mt-12 text-lg">
+          <div className="text-gray-400 space-y-5 lg:mt-12 mt-4">
             <p>
               म. टा. वृत्तसेवा, ठाणे : मुरबाड नगरपंचायतीतील दहापैकी नऊ
               नगरसेवकांनी स्वतंत्र गट स्थापन केला असून त्याला जिल्हाधिकारी
@@ -101,63 +105,80 @@ const ReadNews = () => {
             </p>
           </div>
         </div>
-        <div className="max-w-screen-md rounded-3xl px-12">
-          <div className=" rounded-3xl">
-            <div className="bg-blue-950  rounded-t-2xl p-4">
-              <h1 className="text-white">Latest News</h1>
-            </div>
-            {["/home", "/categories", "/home/read-news"].includes(
-              location.pathname
-            ) && (
-              <div className="bg-red-600 p-2 text-white overflow-hidden whitespace-nowrap text-base">
-                <div className="animate-marquee inline-block">
-                  <span className="mx-6">
-                    📰 राज्यात प्रत्येक जिल्ह्यात 'हनी व्हिलेज'; लवकरच हनी कॅफे
-                  </span>
-                  <span className="mx-6">
-                    💰 RBI चा मोठा निर्णय - व्याजदरात घट
-                  </span>
-                  <span className="mx-6">
-                    🥛 राज्यात दारूचे दर ९ ते ७०% पर्यंत वाढले
-                  </span>
-                  <span className="mx-6">🎓 इ.११वी प्रवेश यादी जाहीर</span>
-                  <span className="mx-6">
-                    🏛️ SC आयोगाला कायदेशीर दर्जा, वैद्यकीय विद्यार्थ्यांच्या
-                    स्टायपेंडमध्ये वाढ
-                  </span>
-                </div>
-              </div>
-            )}
-            <div className="space-y-4">
-              {[...Array(2)].map((_, outerIndex) =>
-                latestNews.map((item, index) => (
-                  <div
-                    key={`news-${outerIndex}-${index}`}
-                    className={`flex justify-between items-center p-2 ${
-                      index % 2 === 0 ? "bg-white" : "bg-gray-100"
-                    }`}
-                  >
-                    <p className="text-sm">{item}</p>
-                    <button className="text-red-800 underline">
-                      Read News
-                    </button>
+
+        {/* RIGHT SIDE */}
+        <div className="w-full md:w-1/2 px-6 md:px-0">
+          <div>
+            <h1 className="bg-blue-900 p-3 text-red-600 rounded-t-xl">
+              Latest News
+            </h1>
+
+            <div className="bg-red-600 py-3 text-white overflow-hidden whitespace-nowrap text-lg">
+              <div className="flex w-max animate-marquee">
+                {[...Array(2)].map((_, i) => (
+                  <div key={i} className="flex">
+                    <span className="mx-6">
+                      📰 राज्यात प्रत्येक जिल्ह्यात 'हनी व्हिलेज'; लवकरच हनी कॅफे
+                    </span>
+                    <span className="mx-6">💰 RBI चा मोठा निर्णय - व्याजदरात घट</span>
+                    <span className="mx-6">🥛 दारूचे दर ९ ते ७०% पर्यंत वाढले</span>
+                    <span className="mx-6">🎓 इ.११वी प्रवेश यादी जाहीर</span>
+                    <span className="mx-6">
+                      🏛️ SC आयोगाला कायदेशीर दर्जा, स्टायपेंडमध्ये वाढ
+                    </span>
                   </div>
-                ))
-              )}
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-4 mt-4">
+              {[...Array(2)].map((_, outerIndex) => (
+                <div key={`section-${outerIndex}`} className="space-y-2">
+                  {latestNews.map((item, index) => (
+                    <div
+                      key={`news-${outerIndex}-${index}`}
+                      className={`flex justify-between items-center p-2 ${
+                        index % 2 === 0 ? "bg-white" : "bg-gray-100"
+                      }`}
+                    >
+                      <p className="text-sm sm:text-base">{item}</p>
+                      <button
+                        className="text-red-800 underline text-sm sm:text-base"
+                        onClick={() =>
+                          window.scrollTo({ top: 0, behavior: "smooth" })
+                        }
+                      >
+                        Read News
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              ))}
             </div>
           </div>
-          <div className="gap-4 py-10 px-4 space-y-6">
+
+          <div className="space-y-4 pt-6">
             {trendingNewsData.map((item, index) => (
-              <div key={index} className="flex items-center gap-4 mt-8">
+              <div
+                key={index}
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+              >
                 <img
                   src={item.img}
                   alt={`Trending ${index}`}
                   className="rounded-lg object-cover"
                 />
-                <div className="space-y-4">
-                  <p className="text-gray-500 text-2xl">15 June 2025</p>
-                  <p className="text-2xl text-gray-800">{item.headline}</p>
-                  <button className="text-red-500 underline text-lg">
+                <div className="space-y-2 sm:space-y-4">
+                  <p className="text-gray-500 text-sm sm:text-xl">
+                    15 June 2025
+                  </p>
+                  <p className="text-lg sm:text-3xl text-gray-800">
+                    {item.headline}
+                  </p>
+                  <button
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    className="text-red-500 underline text-sm sm:text-lg"
+                  >
                     Read News
                   </button>
                 </div>

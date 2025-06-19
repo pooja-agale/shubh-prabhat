@@ -4,9 +4,9 @@ import SavedNews from './SavedNews';
 const BlogsPage = () => {
   return (
     <div>
-      <SavedNews />
+      <SavedNews hideBookmarkAndEye={true} />
     </div>
-  )
-}
+  );
+};
 
-export default BlogsPage
+export default BlogsPage;

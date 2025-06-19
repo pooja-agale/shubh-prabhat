@@ -11,8 +11,8 @@ const ContactPage = () => {
       />
 
       {/* Contact Form Overlay */}
-      <div className="absolute inset-0 flex items-center justify-center rounded-3xl">
-        <form className="bg-white  p-8 rounded-xl shadow-lg w-full max-w-md">
+      <div className="absolute inset-0 flex items-center lg:justify-center rounded-3xl p-8">
+        <form className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
           <h2 className="text-2xl mb-6 text-center">Contact Us</h2>
 
           <input
